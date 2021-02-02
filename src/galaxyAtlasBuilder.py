@@ -31,14 +31,12 @@ class GalaxyAtlasBuilder:
 
     @staticmethod
     def build_planets(atlas: GalaxyAtlas, routes: List):
-        for name, planets in routes:
+        for _, planets in routes:
             previous = None
-            for planet in planets:
+            for name in planets:
+                planet = Planet(name, [])
                 planet = atlas.create_or_update_planet(planet)
                 if previous is not None:
                     previous.add_neighbour(planet)
                     planet.add_neighbour(previous)
                 previous = planet
-        for planet in atlas.planets:
-            for neighbour in planet.neighbours:
-                print(planet.name, ':', neighbour.name)

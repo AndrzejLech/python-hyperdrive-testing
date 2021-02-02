@@ -19,8 +19,8 @@ if __name__ == '__main__':
             break
 
         print('Your on the ' + planet.name + '. You can jump to:')
-        for neighbour, index in planet.neighbours:
-            print(neighbour, ':', index)
+        for neighbour in planet.neighbours:
+            print(neighbour.name)
 
         answer = input()
         if answer == 'quit':
