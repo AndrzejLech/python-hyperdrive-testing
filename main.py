@@ -19,9 +19,10 @@ if __name__ == '__main__':
             break
 
         print('Your on the ' + planet.name + '. You can jump to:')
-        for neighbour in planet.neighbours:
-            print(neighbour.name)
-
+        for index, neighbour in enumerate(planet.neighbours):
+            print(str(index) + '.', neighbour.name)
         answer = input()
+        if int(answer) < len(planet.neighbours):
+            hyperdrive.jump_to(planet.neighbours[int(answer)])
         if answer == 'quit':
             break
